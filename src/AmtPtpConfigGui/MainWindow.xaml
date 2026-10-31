@@ -1585,6 +1585,9 @@
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
+                <TabItem Header="Haptics" Style="{StaticResource SettingsTabItem}">
+                    <local:HapticsPanel/>
+                </TabItem>
             </TabControl>
 
             <!-- ===================== Live visualization ===================== -->

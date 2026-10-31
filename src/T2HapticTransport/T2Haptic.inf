@@ -1,0 +1,43 @@
+; Experimental actuator-only driver. Requires a properly signed catalog.
+[Version]
+Signature="$WINDOWS NT$"
+Class=USBDevice
+ClassGuid={88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider=%Provider%
+DriverVer=10/30/2026,0.1.0.0
+CatalogFile=T2Haptic.cat
+PnpLockdown=1
+[Manufacturer]
+%Provider%=Models,NTamd64.10.0...19041
+[Models.NTamd64.10.0...19041]
+%Device%=Install,USB\VID_05AC&PID_0340&MI_03
+[DestinationDirs]
+DriverCopy=13
+[SourceDisksNames]
+1=%Disk%,,,
+[SourceDisksFiles]
+T2Haptic.sys=1
+[Install.NT]
+CopyFiles=DriverCopy
+[DriverCopy]
+T2Haptic.sys
+[Install.NT.HW]
+AddReg=Security
+[Security]
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)"
+[Install.NT.Services]
+AddService=T2Haptic,0x00000002,Service
+[Service]
+DisplayName=%Device%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%13%\T2Haptic.sys
+[Install.NT.Wdf]
+KmdfService=T2Haptic,Wdf
+[Wdf]
+KmdfLibraryVersion=1.15
+[Strings]
+Provider="Local T2 Haptic Prototype"
+Device="T2 Actuator Transport (Experimental)"
+Disk="T2 Haptic Driver"

@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><Nullable>disable</Nullable><AssemblyName>WellspringHaptics</AssemblyName></PropertyGroup>
+</Project>

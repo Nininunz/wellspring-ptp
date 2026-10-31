@@ -1,0 +1,32 @@
+<UserControl x:Class="AmtPtpConfigGui.HapticsPanel"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="16">
+  <TextBlock Text="Second-click haptics" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,8"/>
+  <TextBlock Text="Press harder to feel a second click. Uses the trackpad’s real pressure sensor." TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,0,0,20"/>
+  <TextBlock x:Name="Status" Text="Checking haptic helper…" TextWrapping="Wrap" Margin="0,0,0,12"/>
+  <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+   <Button Content="Start helper" Click="Start_Click" Padding="12,7" Margin="0,0,8,0"/>
+   <Button Content="Stop helper" Click="Stop_Click" Padding="12,7"/>
+  </StackPanel>
+  <StackPanel x:Name="SettingsControls" IsEnabled="False">
+   <CheckBox x:Name="Enabled" Content="Enable second haptic click" Margin="0,0,0,18"/>
+   <TextBlock Text="Pressure needed" FontWeight="SemiBold"/>
+   <DockPanel Margin="0,8,0,0"><TextBlock Text="Lighter"/><TextBlock Text="Firmer" HorizontalAlignment="Right"/></DockPanel>
+   <Slider x:Name="Threshold" Minimum="50" Maximum="1000" Value="265" TickFrequency="5" IsSnapToTickEnabled="True" ValueChanged="Threshold_Changed"/>
+   <TextBlock x:Name="ThresholdValue" Text="Threshold: 265" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,0,0,16"/>
+   <TextBlock Text="Live pressure" FontWeight="SemiBold"/>
+   <ProgressBar x:Name="PressureMeter" Minimum="0" Maximum="1000" Height="12" Margin="0,8,0,6"/>
+   <TextBlock x:Name="PressureValue" Text="0" Margin="0,0,0,18"/>
+   <TextBlock Text="Click waveform" FontWeight="SemiBold" Margin="0,0,0,6"/>
+   <ComboBox x:Name="Waveform" SelectedIndex="1" Margin="0,0,0,12"><ComboBoxItem Content="Light"/><ComboBoxItem Content="Firm"/></ComboBox>
+   <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+    <Button Content="Test light" Tag="0" Click="Test_Click" Padding="12,7" Margin="0,0,8,0"/>
+    <Button Content="Test firm" Tag="1" Click="Test_Click" Padding="12,7"/>
+   </StackPanel>
+   <Button Content="Apply haptic settings" Click="Apply_Click" HorizontalAlignment="Left" Padding="14,8" Margin="0,0,0,20"/>
+  </StackPanel>
+  <CheckBox x:Name="Startup" Content="Start haptic helper when I sign in" Click="Startup_Click" Margin="0,0,0,10"/>
+  <TextBlock Text="Settings are saved automatically when you apply them. The helper keeps working while the panel is closed. Starting it or changing sign-in startup may ask for administrator approval." TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}"/>
+ </StackPanel></ScrollViewer>
+</UserControl>

@@ -38,4 +38,12 @@
     <Resource Include="Assets\AppIcon.ico" />
   </ItemGroup>
 
+  <ItemGroup><ProjectReference Include="..\WellspringHaptics\WellspringHaptics.csproj" ReferenceOutputAssembly="false" /></ItemGroup>
+  <Target Name="CopyHapticsHelper" AfterTargets="Build">
+    <ItemGroup><HapticHelperFiles Include="..\WellspringHaptics\bin\$(Configuration)\net8.0-windows\WellspringHaptics.*" /></ItemGroup>
+    <Copy SourceFiles="@(HapticHelperFiles)" DestinationFolder="$(TargetDir)" />
+  </Target>
+  <Target Name="PublishHapticsHelper" AfterTargets="Publish">
+    <Copy SourceFiles="@(HapticHelperFiles)" DestinationFolder="$(PublishDir)" />
+  </Target>
 </Project>
